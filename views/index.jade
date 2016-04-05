@@ -1,6 +1,13 @@
 extends layout
 
 block content
-	div(app-controller='mainController')
-		h1= title
-		p Welcome to #{title}
+	div
+		p= "{{ word.fr }}"
+	div(ng-controller='mainController')
+		h1= "Homepage"
+		div
+			input(type="text", ng-model="word.fr", placeholder="fr")
+			input(type="text", ng-model="word.en", placeholder="en")
+			input(type="submit", ng-click="addWord();")
+			ul
+				li(ng-repeat="word in words")="{{ word.fr }} 			| 				 {{ word.en }}"
